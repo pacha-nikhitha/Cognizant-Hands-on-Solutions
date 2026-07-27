@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        Bean definition for Country.
+        id        : unique name used to retrieve this bean from the ApplicationContext
+        class     : fully-qualified class name of the POJO Spring will instantiate
+        <property>: corresponds to a JavaBean setter (e.g. name="code" -> setCode())
+        value     : the literal value injected via that setter (Dependency Injection)
+
+        Countries supported by the airline:
+          US - United States
+          DE - Germany
+          IN - India
+          JP - Japan
+
+        India is configured here as the selected country.
+    -->
+    <bean id="country" class="com.cognizant.springlearn.Country">
+        <property name="code" value="IN" />
+        <property name="name" value="India" />
+    </bean>
+
+</beans>

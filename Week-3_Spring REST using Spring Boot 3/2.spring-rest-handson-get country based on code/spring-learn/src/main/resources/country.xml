@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Spring XML Bean Configuration – country.xml
+    =============================================
+    Defines a LIST of country beans used by CountryService.getCountry(code).
+
+    The service loads this file via ClassPathXmlApplicationContext, retrieves
+    the "countryList" bean, and iterates through it to find a case-insensitive
+    match on the country code supplied in the URL path variable.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util
+           https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- ================================================================
+         Individual Country Beans
+         Each bean represents one country with an ISO 3166-1 alpha-2 code.
+         ================================================================ -->
+
+    <bean id="india" class="com.cognizant.springlearn.Country">
+        <property name="code" value="IN"/>
+        <property name="name" value="India"/>
+    </bean>
+
+    <bean id="usa" class="com.cognizant.springlearn.Country">
+        <property name="code" value="US"/>
+        <property name="name" value="United States"/>
+    </bean>
+
+    <bean id="uk" class="com.cognizant.springlearn.Country">
+        <property name="code" value="GB"/>
+        <property name="name" value="United Kingdom"/>
+    </bean>
+
+    <bean id="australia" class="com.cognizant.springlearn.Country">
+        <property name="code" value="AU"/>
+        <property name="name" value="Australia"/>
+    </bean>
+
+    <bean id="canada" class="com.cognizant.springlearn.Country">
+        <property name="code" value="CA"/>
+        <property name="name" value="Canada"/>
+    </bean>
+
+    <!-- ================================================================
+         countryList – a java.util.List of all country beans above.
+         CountryService retrieves this list and iterates to find a match.
+         ================================================================ -->
+    <util:list id="countryList" value-type="com.cognizant.springlearn.Country">
+        <ref bean="india"/>
+        <ref bean="usa"/>
+        <ref bean="uk"/>
+        <ref bean="australia"/>
+        <ref bean="canada"/>
+    </util:list>
+
+</beans>

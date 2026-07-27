@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Spring XML Bean Configuration – country.xml
+    ============================================
+    Defines the "india" bean as an instance of com.cognizant.springlearn.Country.
+
+    Spring reads this file at startup via ClassPathXmlApplicationContext.
+    It instantiates the Country class using its no-arg constructor, then
+    injects the <property> values through the corresponding setter methods
+    (setCode() and setName()).
+
+    Why XML configuration here?
+    The hand-on requirement explicitly states that the bean must be loaded
+    from a Spring XML configuration file, mirroring classic Spring Core
+    usage before annotation-driven configuration became the norm.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        Bean: india
+        Class: Country
+        Properties injected via setter injection:
+          • code → "IN"  (ISO 3166-1 alpha-2 code for India)
+          • name → "India"
+    -->
+    <bean id="india" class="com.cognizant.springlearn.Country">
+        <property name="code" value="IN"/>
+        <property name="name" value="India"/>
+    </bean>
+
+</beans>
