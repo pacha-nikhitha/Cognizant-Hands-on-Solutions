@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #102a43;
+  --secondary-color: #486581;
+  --success-color: #198754;
+  --background-grad: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --card-hover-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--background-grad);
+  min-height: 100vh;
+  color: #102a43;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.portal-header {
+  background-color: white;
+  border-bottom: 1px solid #bcccdc;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  text-align: center;
+}
+
+.portal-title {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: -0.02em;
+}
+
+.portal-subtitle {
+  margin: 0.25rem 0 0 0;
+  font-size: 1rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.portal-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.component-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.component-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: #bcccdc;
+}
+
+.card-header {
+  background-color: #f0f4f8;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.welcome-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #334e68;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Home Card Styling */
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.action-tag {
+  background-color: #e6fffa;
+  color: #006d5b;
+  border: 1px solid #b2f5ea;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.action-tag:hover {
+  background-color: #b2f5ea;
+}
+
+/* About Card Styling */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  border-top: 1px solid #f0f4f8;
+  padding-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f609b;
+}
+
+.stat-lbl {
+  font-size: 0.7rem;
+  color: #627d98;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+/* Contact Card Styling */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #486581;
+}
+
+.contact-item {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.portal-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--secondary-color);
+  font-size: 0.85rem;
+  border-top: 1px solid #bcccdc;
+  background-color: white;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

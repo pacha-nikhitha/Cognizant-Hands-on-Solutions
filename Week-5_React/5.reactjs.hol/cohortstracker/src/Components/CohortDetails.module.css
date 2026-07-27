@@ -1,0 +1,23 @@
+.box {
+  width: 300px;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  vertical-align: top;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+dt {
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+dd {
+  margin-left: 0;
+  margin-bottom: 8px;
+  color: #333;
+}

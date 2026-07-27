@@ -1,0 +1,20 @@
+package com.library.service;
+
+import com.library.repository.BookRepository;
+
+public class BookService {
+
+    private BookRepository bookRepository;
+
+    public BookService() {
+        System.out.println("BookService bean created successfully.");
+    }
+
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public void showBooks() {
+        System.out.println("Available books: " + bookRepository.getBookList());
+    }
+}
