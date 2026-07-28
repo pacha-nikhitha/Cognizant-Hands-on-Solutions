@@ -1,0 +1,392 @@
+/* ============================================================
+   App.css — Blogger App Styles
+   Modern Dark Theme with Glassmorphism
+   ============================================================ */
+
+/* ── Enrolled Tag ───────────────────────────────────────────── */
+.enrolled-tag {
+  background: linear-gradient(135deg, #00d4aa, #00b4d8);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ── CSS Reset & Variables ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary:    #0d0f1a;
+  --bg-secondary:  #131629;
+  --bg-card:       #1a1e35;
+  --bg-glass:      rgba(255,255,255,0.05);
+  --border-glass:  rgba(255,255,255,0.10);
+
+  --accent-book:   #6c63ff;
+  --accent-blog:   #00d4aa;
+  --accent-course: #ff6b6b;
+  --accent-yellow: #ffd700;
+
+  --text-primary:  #f0f2ff;
+  --text-secondary:#a0a8c8;
+  --text-muted:    #6b7399;
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --shadow-glow: 0 8px 32px rgba(108,99,255,0.15);
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── App Wrapper ────────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0d0f1a 0%, #131629 50%, #0f1220 100%);
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.app-header {
+  text-align: center;
+  padding: 48px 24px 32px;
+  background: linear-gradient(180deg, rgba(108,99,255,0.12) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.app-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6c63ff, #00d4aa, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Tab Bar ────────────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  padding: 10px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.tab-btn:hover {
+  background: rgba(108,99,255,0.2);
+  border-color: rgba(108,99,255,0.5);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.tab-active {
+  background: linear-gradient(135deg, #6c63ff, #8b83ff) !important;
+  border-color: #6c63ff !important;
+  color: #fff !important;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+
+/* ── Main Grid ──────────────────────────────────────────────── */
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  padding: 40px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* ── Section Cards (st2, v1, mystyle1) ──────────────────────── */
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-glow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.section-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(108,99,255,0.2);
+}
+
+/* className="st2" — Book Details */
+.st2 { border-top: 3px solid var(--accent-book); }
+/* className="v1"  — Blog Details */
+.v1  { border-top: 3px solid var(--accent-blog); }
+/* className="mystyle1" — Course Details */
+.mystyle1 { border-top: 3px solid var(--accent-course); }
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+/* ── Technique Banner ───────────────────────────────────────── */
+.technique-banner {
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+  color: var(--text-secondary);
+}
+.book-banner   { background: rgba(108,99,255,0.12); border-left: 3px solid var(--accent-book); }
+.blog-banner   { background: rgba(0,212,170,0.10);  border-left: 3px solid var(--accent-blog); }
+.course-banner { background: rgba(255,107,107,0.10);border-left: 3px solid var(--accent-course); }
+
+/* ── Component Wrapper ──────────────────────────────────────── */
+.component-wrapper { padding: 4px 0; }
+
+/* ── Item List & Cards ──────────────────────────────────────── */
+.item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  position: relative;
+  transition: background 0.25s ease, transform 0.25s ease;
+  cursor: default;
+}
+
+.card:hover {
+  background: rgba(255,255,255,0.07);
+  transform: translateX(4px);
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Price Colors — if/else technique demo */
+.price-high   { color: #ff6b6b; }
+.price-medium { color: #ffd700; }
+.price-low    { color: #00d4aa; }
+
+/* ── Blog Card ──────────────────────────────────────────────── */
+.author {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.category-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-top: 8px;
+}
+
+/* ── Course Card ────────────────────────────────────────────── */
+.duration {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.availability-box {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.available   { background: rgba(0,212,170,0.12); border: 1px solid rgba(0,212,170,0.3); color: #00d4aa; }
+.unavailable { background: rgba(255,107,107,0.10); border: 1px solid rgba(255,107,107,0.3); color: #ff6b6b; }
+
+.enroll-btn {
+  background: linear-gradient(135deg, #00d4aa, #00b4d8);
+  border: none;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.enroll-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0,212,170,0.4);
+}
+
+/* ── Badges & Status ────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.08);
+  color: var(--text-muted);
+  margin-top: 6px;
+  margin-right: 6px;
+}
+
+.published-badge { background: rgba(0,212,170,0.15); color: #00d4aa; }
+.draft-badge     { background: rgba(255,215,0,0.12);  color: #ffd700; }
+
+.level-beginner     { background: rgba(0,212,170,0.15);  color: #00d4aa; }
+.level-intermediate { background: rgba(255,215,0,0.12);  color: #ffd700; }
+.level-advanced     { background: rgba(255,107,107,0.15);color: #ff6b6b; }
+
+.status-active   { 
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.72rem; padding: 3px 10px;
+  border-radius: 50px; background: rgba(0,212,170,0.15); color: #00d4aa;
+}
+.status-inactive { 
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.72rem; padding: 3px 10px;
+  border-radius: 50px; background: rgba(255,107,107,0.15); color: #ff6b6b;
+}
+
+/* ── Info Labels ────────────────────────────────────────────── */
+.data-count {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  background: var(--bg-glass);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-book);
+}
+
+.no-data {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 18px;
+  text-align: center;
+  background: var(--bg-glass);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-glass);
+}
+
+.error-box {
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,107,107,0.12);
+  border: 1px solid rgba(255,107,107,0.3);
+  color: #ff6b6b;
+  font-size: 0.85rem;
+}
+
+/* ── Technique Label ────────────────────────────────────────── */
+.technique-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-glass);
+  border: 1px dashed var(--border-glass);
+  text-align: center;
+}
+
+.technique-label code {
+  background: rgba(108,99,255,0.2);
+  color: #a5b4fc;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.73rem;
+  margin: 0 2px;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-glass);
+  background: rgba(0,0,0,0.2);
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-card:nth-child(1) { animation-delay: 0.1s; }
+.section-card:nth-child(2) { animation-delay: 0.2s; }
+.section-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app-header h1 { font-size: 2rem; }
+  .main-grid { padding: 24px 16px; gap: 20px; }
+}

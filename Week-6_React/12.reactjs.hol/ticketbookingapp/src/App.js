@@ -107,7 +107,7 @@ const flightData = [
 ];
 
 // ============================================================
-// APP COMPONENT - Main conditional rendering logic
+// APP COMPONENT – Main conditional rendering logic
 // ============================================================
 function App() {
   // State to track login status
@@ -146,8 +146,8 @@ function App() {
   }
 
   return (
-    <div className="app">
-      {/* Navbar - uses element variables for login/logout button */}
+    <div className="app" id="top">
+      {/* Navbar – uses element variables for login/logout button */}
       <Navbar
         isLoggedIn={isLoggedIn}
         username={username}
@@ -156,18 +156,24 @@ function App() {
       />
 
       <main className="main-content">
-        {/* Hero Section */}
-        <section className="hero" id="flights">
+        {/* ── Hero Section ── */}
+        <section className="hero" id="flights" aria-label="Hero section">
           <div className="hero-text">
-            <h1>Find & Book Your Perfect Flight</h1>
-            <p>
-              {/* Inline conditional rendering using ternary */}
+            <h1>
+              Find &amp; Book Your{' '}
+              <span className="highlight">Perfect Flight</span>
+            </h1>
+
+            {/* Inline conditional rendering using ternary */}
+            <p className={`hero-subtitle ${isLoggedIn ? 'logged-in' : ''}`}>
               {isLoggedIn
-                ? '✅ You are logged in. Select a flight and book your seat instantly!'
-                : '👋 Browse available flights. Login to unlock booking features!'}
+                ? '✅ You are logged in. Select a flight below and book your seat instantly!'
+                : '👋 Browse available flights below. Login (top-right) to unlock booking features!'}
             </p>
           </div>
-          <div className="hero-stats">
+
+          {/* Stats – conditional badge using && operator */}
+          <div className="hero-stats" aria-label="Platform statistics">
             <div className="stat">
               <span className="stat-num">500+</span>
               <span className="stat-label">Destinations</span>
@@ -180,20 +186,27 @@ function App() {
               <span className="stat-num">24/7</span>
               <span className="stat-label">Support</span>
             </div>
+            {/* Conditional rendering with && operator */}
+            {isLoggedIn && (
+              <div className="stat">
+                <span className="stat-num">🔓</span>
+                <span className="stat-label">Full Access</span>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* Flights Section - renders element variable (conditional rendering) */}
-        <section className="flights-section">
+        {/* ── Flights Section – renders element variable ── */}
+        <section className="flights-section" aria-label="Available flights">
           <div className="section-header">
             <h2>
               {/* Conditional rendering with && operator */}
-              {isLoggedIn && <span className="logged-badge">🔓 </span>}
+              {isLoggedIn && <span className="logged-badge" aria-hidden="true">🔓 </span>}
               Available Flights
             </h2>
             <p className="section-sub">
               Showing {flightData.length} flights &nbsp;•&nbsp;
-              {isLoggedIn ? 'Click "Book Now" to reserve' : 'Login to book tickets'}
+              {isLoggedIn ? 'Click "Book Now" to reserve your seat' : 'Login to book tickets'}
             </p>
           </div>
 
@@ -202,8 +215,30 @@ function App() {
         </section>
       </main>
 
-      <footer className="footer">
-        <p>© 2025 SkyBook Flight Booking App &nbsp;|&nbsp; Built with React Conditional Rendering</p>
+      {/* ── Footer ── */}
+      <footer className="footer" id="about" role="contentinfo">
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <span className="footer-logo" aria-hidden="true">✈</span>
+            <span className="footer-name">SkyBook</span>
+          </div>
+
+          <nav className="footer-links" aria-label="Footer navigation">
+            <a href="#flights" className="footer-link">Flights</a>
+            <a href="#offers"  className="footer-link">Offers</a>
+            <a href="#about"   className="footer-link">About</a>
+            <a href="#about"   className="footer-link">Privacy</a>
+            <a href="#about"   className="footer-link">Terms</a>
+          </nav>
+
+          <p>
+            © 2025{' '}
+            <span className="footer-accent">SkyBook</span>{' '}
+            Flight Booking App &nbsp;|&nbsp; Built with{' '}
+            <span className="footer-accent">React</span>{' '}
+            Conditional Rendering
+          </p>
+        </div>
       </footer>
     </div>
   );
