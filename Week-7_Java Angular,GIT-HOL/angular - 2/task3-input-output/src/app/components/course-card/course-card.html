@@ -1,0 +1,15 @@
+<div class="card" [class.enrolled-card]="isEnrolled">
+  @if (course) {
+    <h3>{{ course.name }}</h3>
+    <p class="course-code">Code: <strong>{{ course.code }}</strong></p>
+    <p class="course-credits">Credits: <strong>{{ course.credits }}</strong></p>
+    <p class="course-id">ID: {{ course.id }}</p>
+    
+    <button 
+      class="btn-enroll" 
+      [disabled]="isEnrolled" 
+      (click)="enrollRequested.emit(course.id)">
+      {{ isEnrolled ? '✓ Enrolled' : 'Enroll' }}
+    </button>
+  }
+</div>

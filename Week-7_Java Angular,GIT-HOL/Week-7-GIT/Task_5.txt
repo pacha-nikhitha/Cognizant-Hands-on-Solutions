@@ -1,0 +1,32 @@
+Task - 5 : Clean Up and Push to Remote Repository
+
+- Open the terminal and navigate to your Git repository.
+
+- Verify the status of your repository to ensure that there are no uncommitted changes using the following command:
+  
+  git status
+
+
+- list all available local and remote branches and identify the current branch using the following command:
+  
+  git branch -a
+
+- pull the latest changes from the remote repository to ensure that your local repository is up to date using the following command:
+  
+  git pull origin main
+
+
+- verify the local repository was up to date with the remote repository by checking the commit history using the following command:
+  
+  git log --oneline --graph --decorate
+
+
+- push the local changes to the remote repository using the following command:
+  
+  git push origin main
+
+
+- verify that the pushed commits were successfully added to the remote repository by checking the commit history on the remote repository using the following command:
+  
+  git log --oneline --graph --decorate
+  

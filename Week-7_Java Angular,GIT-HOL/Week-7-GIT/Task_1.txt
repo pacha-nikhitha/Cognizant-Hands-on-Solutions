@@ -1,0 +1,21 @@
+Task -1 Setup Git Configuration
+
+- To Verify the git was installed successfully, run the following command in your terminal:
+  ```
+  git --version
+  ```
+
+- Configure your Git username and email address using the following commands:
+  ```
+  git config --global user.name "Azad"
+  git config --global user.email "azad@example.com"
+
+- To verify that your Git configuration was set correctly, run the following commands:
+  ```
+  git config --global user.name
+  git config --global user.email
+  ```
+
+ git config --list
+
+ 

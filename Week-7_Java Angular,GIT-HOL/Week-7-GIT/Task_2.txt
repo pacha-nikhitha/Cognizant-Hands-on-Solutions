@@ -1,0 +1,34 @@
+Task - 2 : Git Ignore
+
+- The `.gitignore` file is used to specify which files and directories should be ignored by Git. This is useful for excluding temporary files, build artifacts, and other files that do not need to be tracked in version control.
+
+- To create a `.gitignore` file, you can use the following command in your terminal:
+  ```
+  touch .gitignore
+  ```
+
+- Create a simple .log file in the working directory
+
+- Add rules to the `.gitignore` file to ignore specific files or directories. For example, to ignore all `.log` files, you can add the following line to your `.gitignore` file:
+  ```
+  *.log
+  ```
+
+- Verrify that the `.gitignore` file is working correctly by checking the status of your Git repository. Run the following command:
+  ```
+  git status
+  ```
+
+- Confirm that the `.log` file is not being tracked by Git and is listed as an untracked file in the output of the `git status` command.
+
+- Save the Changes and commit the changes to your Git repository using the following commands:
+  ```
+  git add .gitignore
+  git commit -m "Add .gitignore file to ignore .log files"
+  ```
+
+- Push the Changes to your remote repository using the following command:
+  ```
+  git push origin main
+  ```
+

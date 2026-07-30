@@ -1,0 +1,67 @@
+Task - 3: Branching and Merging
+
+- Open the terminal and navigate to your Git repository.
+
+- Create a new branch named "GitNewBranch" using the following command:
+  
+   git branch GitNewBranch
+
+- list all available local and remote branches and identify the current branch using the following command:
+  
+   git branch -a
+
+- switch to the newly created branch "GitNewBranch" using the following command:
+  
+   git checkout GitNewBranch
+
+
+- create a new file named "newfile.txt" in the working directory and add some content to it.
+
+- Add the new file to the staging area using the following command:
+  
+   git add newfile.txt
+
+
+- Commit the changes to the "GitNewBranch" branch using the following command:
+  
+   git commit -m "Add newfile.txt to GitNewBranch"
+
+- Verify the repository status and confirm that the changes have been committed using the following command:
+  
+   git status
+
+
+- Switch back to the master branch using the following command:
+  
+   git checkout main
+
+- compare the difference bewtween the master branch and the "GitNewBranch" branch using the following command:
+  
+   git diff GitNewBranch
+
+
+- view the visual difference using the configured diff tool by running the following command:
+  
+   git mergetool
+
+
+- Merge the changes from the "GitNewBranch" branch into the master branch using the following command:
+
+    git merge GitNewBranch
+
+- View the merge history and confirm that the changes from the "GitNewBranch" branch have been successfully merged into the master branch using the following command:
+  
+   git log --oneline --graph --decorate 
+
+- delete the merged branch "GitNewBranch" using the following command:
+  
+   git branch -d GitNewBranch
+
+- Verify the status of the repository and confirm that the "GitNewBranch" branch has been deleted using the following command:
+  
+   git branch -a
+
+
+
+
+

@@ -1,0 +1,17 @@
+.home-container {
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  color: #f1f5f9;
+}
+
+.count-badge {
+  color: #4ade80;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,95 @@
+Task -4 : Merge Conflict Resolution
+
+- Open the terminal and navigate to your Git repository.
+
+- Verify the Master Branch is in a Clean State by running the following command:
+  
+  git status
+
+
+- Create a New Branch named "GitWork" using the following command:
+  
+  git branch GitWork
+
+- Switch to the "GitWork" branch using the following command:
+
+    git checkout GitWork
+
+- Create a sample file named hello.xml in GitWork branch and add some content to it.
+
+- MOdify the file and commit the changes to the "GitWork" branch using the following commands:
+  
+  git add hello.xml
+  git commit -m "Add hello.xml file in GitWork branch"
+
+
+- Switch back to the master branch using the following command:
+
+    git checkout main
+
+
+- Create the same file hello.xml in the master branch and add different content to it.
+
+- Commit the changes to the master branch using the following commands:
+  
+  git add hello.xml
+  git commit -m "Add hello.xml file in master branch"
+
+
+- Verify the commit history of both branches using the following command:
+  
+  git log --oneline --graph --decorate
+
+
+- Compare the difference between the master branch and the "GitWork" branch using the following command:
+  
+  git diff GitWork
+
+
+- Attempt to merge the changes from the "GitWork" branch into the master branch using the following command:
+
+    git merge GitWork
+
+- Observed the Merge Conflict message indicating that there are conflicting changes in the hello.xml file.
+
+- Open the hello.xml file in a text editor and manually resolve the merge conflict by choosing which changes to keep or combining them as needed.
+
+- After resolving the conflict, save the changes to the hello.xml file.
+
+- Add the resolved file to the staging area using the following command:
+  
+  git add hello.xml
+
+- Commit the resolved changes to the master branch using the following command:
+
+    git commit -m "Resolve merge conflict in hello.xml"
+
+- Verify the status of the repository and confirm that the merge conflict has been resolved using the following command:
+
+    git status
+
+- update the .gitignore file to ignore the backup files created during the merge conflict resolution process. Add the following line to your .gitignore file:
+
+    *.orig
+
+- Commit the changes to the .gitignore file using the following commands:
+  
+  git add .gitignore
+  git commit -m "Update .gitignore to ignore backup files"
+
+
+- list all available local and remote branches and identify the current branch using the following command:
+  
+  git branch -a
+
+
+- Delete the merged branch "GitWork" using the following command:
+  
+  git branch -d GitWork
+
+
+- Verify the final commit history and confirm that the changes from the "GitWork" branch have been successfully merged into the master branch using the following command:
+  
+  git log --oneline --graph --decorate
+
+

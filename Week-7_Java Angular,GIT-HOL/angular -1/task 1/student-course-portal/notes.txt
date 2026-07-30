@@ -1,0 +1,104 @@
+================================================================
+  Task 1: Angular Project File Explanations — notes.txt
+  Project: student-course-portal (Angular 20, Standalone Mode)
+================================================================
+
+1. angular.json
+   Purpose: The Angular workspace configuration file that defines project structure, build
+   targets (build, serve, test), file paths, style/asset settings, and production budget
+   thresholds for the CLI tools (ng build, ng serve, ng test).
+
+2. tsconfig.json
+   Purpose: The root TypeScript configuration file that sets global compiler options
+   (strict mode, ES2022 target, decorators, etc.) and acts as the base config inherited
+   by tsconfig.app.json and tsconfig.spec.json.
+
+3. tsconfig.app.json
+   Purpose: Application-specific TypeScript config that extends tsconfig.json and targets
+   only the source files in src/ (excluding *.spec.ts test files) for the production
+   application compilation.
+
+4. package.json
+   Purpose: The npm package manifest listing all project dependencies (@angular/core,
+   rxjs, zone.js, etc.), devDependencies (Angular CLI, TypeScript, Karma), and npm
+   scripts (ng serve, ng build, ng test) used to run the project.
+
+5. src/main.ts
+   Purpose: The application entry point that bootstraps the root standalone component
+   (App) with the application configuration (appConfig) using bootstrapApplication()
+   from @angular/platform-browser — this is what the browser executes first.
+
+6. src/app/app.config.ts  [Standalone API — replaces app.module.ts in Angular 17+]
+   Purpose: Defines the root application configuration (ApplicationConfig) that registers
+   global providers such as the router (provideRouter), zone-based change detection
+   (provideZoneChangeDetection), and global error listeners — equivalent to the providers
+   array in the old NgModule approach.
+
+7. src/app/app.ts  [app.component.ts equivalent in Angular 20]
+   Purpose: Defines the root standalone AppComponent decorated with @Component, which
+   specifies the root selector (app-root), its HTML template, CSS styles, and any
+   imported directives/modules (e.g., RouterOutlet) needed by the template.
+
+8. src/index.html
+   Purpose: The single HTML shell page served by the browser that contains the <app-root>
+   custom element where Angular mounts the entire application; Angular's build process
+   automatically injects the compiled JS/CSS bundles into this file.
+
+================================================================
+  Step 4: ng build — Generated dist/ Files
+================================================================
+
+After running `ng build`, the dist/student-course-portal/browser/ folder contains:
+
+  • main-[hash].js        --> The PRIMARY compiled application code (your TypeScript
+                             components, services, and Angular framework code, all bundled,
+                             tree-shaken, and minified into a single JavaScript chunk).
+  • polyfills-[hash].js  --> Browser compatibility polyfills (e.g., zone.js).
+  • styles-[hash].css    --> Compiled and minified global CSS styles.
+  • chunk-[hash].js      --> Lazy-loaded route chunks (if any lazy routes are defined).
+  • index.html           --> The processed index.html with injected script/link tags.
+  • favicon.ico          --> Application icon copied from the public/ folder.
+
+  *** The file containing the compiled application code is: main-[hash].js ***
+
+================================================================
+  Step 5: angular.json — Production Budget Thresholds
+================================================================
+
+Location: angular.json > projects > student-course-portal > architect > build
+          > configurations > production > budgets
+
+  Budget Type: "initial"  (the total initial download size of the app)
+  ┌─────────────────────┬───────────────────────────────────────────────────────────────┐
+  │ maximumWarning: 500kB│ If the initial bundle EXCEEDS 500 KB, Angular CLI prints a   │
+  │                      │ WARNING during ng build but the build still succeeds.         │
+  ├─────────────────────┼───────────────────────────────────────────────────────────────┤
+  │ maximumError:   1MB  │ If the initial bundle EXCEEDS 1 MB, Angular CLI throws an    │
+  │                      │ ERROR and the build FAILS — enforcing a hard size limit.      │
+  └─────────────────────┴───────────────────────────────────────────────────────────────┘
+
+  Budget Type: "anyComponentStyle"  (per-component CSS file size)
+  ┌─────────────────────┬───────────────────────────────────────────────────────────────┐
+  │ maximumWarning:  4kB │ If any single component's style file exceeds 4 KB, a WARNING │
+  │                      │ is printed during the build.                                  │
+  ├─────────────────────┼───────────────────────────────────────────────────────────────┤
+  │ maximumError:    8kB │ If any single component's style file exceeds 8 KB, the build │
+  │                      │ FAILS with an error.                                          │
+  └─────────────────────┴───────────────────────────────────────────────────────────────┘
+
+  WHAT THESE THRESHOLDS CONTROL:
+  These budget thresholds are performance guardrails that prevent the application from
+  growing too large over time. They enforce bundle-size discipline during CI/CD pipelines
+  and production builds, ensuring the app stays fast and lightweight for end users.
+
+================================================================
+  Notes on Standalone API (Angular 17+/Angular 20)
+================================================================
+
+  • This project uses the STANDALONE API (no NgModules).
+  • There is NO app.module.ts — instead app.config.ts provides the same functionality.
+  • app.ts uses @Component with the `imports` array directly (no module needed).
+  • src/main.ts calls bootstrapApplication(App, appConfig) instead of
+    platformBrowserDynamic().bootstrapModule(AppModule).
+
+================================================================

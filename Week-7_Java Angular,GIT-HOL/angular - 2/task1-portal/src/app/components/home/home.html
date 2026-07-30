@@ -1,0 +1,83 @@
+<div class="card">
+  <!-- 11. String Interpolation -->
+  <header class="header">
+    <h1>{{ portalName }}</h1>
+    <p class="subtitle">Search, enroll, and manage your courses seamlessly</p>
+  </header>
+
+  <!-- Portal Status Control -->
+  <div class="toggle-box">
+    <span>Portal Status: <strong>{{ isPortalActive ? 'ACTIVE' : 'INACTIVE' }}</strong></span>
+    <button class="btn-secondary" (click)="togglePortalStatus()">
+      Toggle Portal Status
+    </button>
+  </div>
+
+  <!-- Global Message Notification -->
+  @if (message) {
+    <div class="alert" [class.alert-disabled]="!isPortalActive">
+      {{ message }}
+    </div>
+  }
+
+  <!-- Search Section (Two-Way Binding) -->
+  <section class="search-section">
+    <h3>Search Courses</h3>
+    <div class="input-group">
+      <!-- 14. Two-Way Binding [(ngModel)] -->
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        placeholder="Type to search courses (e.g. Angular, Java)...">
+    </div>
+    <div class="live-output">
+      Searching for: <strong>{{ searchTerm || 'All Courses' }}</strong>
+    </div>
+  </section>
+
+  <!-- Available Courses List -->
+  <section class="courses-section">
+    <h3>Available Courses</h3>
+    @if (filteredCourses.length === 0) {
+      <p class="no-courses">No courses found matching "{{ searchTerm }}".</p>
+    } @else {
+      <div class="course-list">
+        @for (course of filteredCourses; track course.id) {
+          <div class="course-card">
+            <div class="course-info">
+              <h4>{{ course.title }}</h4>
+              <p class="course-meta">Category: {{ course.category }} | Instructor: {{ course.instructor }}</p>
+            </div>
+            <!-- 12 & 13. Property Binding [disabled] & Event Binding (click) -->
+            <button 
+              class="btn-primary" 
+              [disabled]="!isPortalActive || isEnrolled(course.id)" 
+              (click)="onEnrollClick(course)">
+              {{ isEnrolled(course.id) ? 'Enrolled' : 'Enroll Now' }}
+            </button>
+          </div>
+        }
+      </div>
+    }
+  </section>
+
+  <!-- Enrolled Courses Section -->
+  <section class="enrolled-section">
+    <h3>My Enrolled Courses ({{ enrolledCourses.length }})</h3>
+    @if (enrolledCourses.length === 0) {
+      <p class="no-enrolled">You haven't enrolled in any courses yet.</p>
+    } @else {
+      <div class="enrolled-list">
+        @for (course of enrolledCourses; track course.id) {
+          <div class="enrolled-card">
+            <span class="enrolled-badge">✓ Enrolled</span>
+            <div class="enrolled-details">
+              <h4>{{ course.title }}</h4>
+              <p>{{ course.category }} &bull; {{ course.instructor }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </section>
+</div>
